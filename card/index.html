@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>打卡社区 - 与朋友一起打卡</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PWA相关标签 -->
+    <meta name="description" content="与朋友一起打卡的社区应用，包含番茄钟、打卡任务和社交功能">
+    <meta name="theme-color" content="#4CAF50">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="打卡社区">
+    <link rel="apple-touch-icon" href="https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt=checkin%20app%20icon%20with%20green%20color%20scheme%2C%20simple%20and%20modern%2C%20white%20background&image_size=square">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="app-container">
+        <!-- 导航栏 -->
+        <nav class="navbar">
+            <div class="logo">打卡社区</div>
+            <ul class="nav-links">
+                <li><a href="#pomodoro" class="nav-link active" data-section="pomodoro">番茄钟</a></li>
+                <li><a href="#checkin" class="nav-link" data-section="checkin">我要打卡</a></li>
+                <li><a href="#publish" class="nav-link" data-section="publish">发布打卡任务</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主内容区域 -->
+        <main class="main-content">
+            <!-- 番茄钟模块 -->
+            <section id="pomodoro" class="section active">
+                <h2>番茄钟</h2>
+                <div class="pomodoro-container">
+                    <div class="pomodoro-settings">
+                        <div class="setting-item">
+                            <label>专注时间 (分钟):</label>
+                            <input type="number" id="focus-time" min="1" value="25">
+                        </div>
+                        <div class="setting-item">
+                            <label>短休时间 (分钟):</label>
+                            <input type="number" id="short-break" min="1" value="5">
+                        </div>
+                        <div class="setting-item">
+                            <label>长休时间 (分钟):</label>
+                            <input type="number" id="long-break" min="1" value="15">
+                        </div>
+                        <div class="setting-item">
+                            <label>循环次数:</label>
+                            <input type="number" id="cycles" min="1" value="4">
+                        </div>
+                    </div>
+                    <div class="pomodoro-timer">
+                        <div class="timer-display" id="timer-display">25:00</div>
+                        <div class="timer-status" id="timer-status">准备开始</div>
+                        <div class="timer-controls">
+                            <button id="start-timer">开始</button>
+                            <button id="pause-timer">暂停</button>
+                            <button id="reset-timer">重置</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 我要打卡模块 -->
+            <section id="checkin" class="section">
+                <h2>我要打卡</h2>
+                <div class="checkin-container">
+                    <!-- 打卡任务选择 -->
+                    <div class="checkin-tasks">
+                        <h3>选择打卡任务</h3>
+                        <div id="task-list" class="task-list">
+                            <!-- 任务列表将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <!-- 打卡上传 -->
+                    <div class="checkin-upload">
+                        <h3>上传打卡内容</h3>
+                        <div class="upload-area">
+                            <input type="file" id="file-upload" multiple>
+                            <button id="submit-checkin">提交打卡</button>
+                        </div>
+                    </div>
+                    
+                    <!-- 历史记录和他人打卡 -->
+                    <div class="checkin-history">
+                        <h3>历史打卡记录</h3>
+                        <div id="history-list" class="history-list">
+                            <!-- 历史记录将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                    
+                    <div class="others-checkin">
+                        <h3>他人的打卡</h3>
+                        <div id="others-list" class="others-list">
+                            <!-- 他人打卡将通过JavaScript动态生成 -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 发布打卡任务模块 -->
+            <section id="publish" class="section">
+                <h2>发布打卡任务</h2>
+                <div class="publish-container">
+                    <div class="publish-form">
+                        <div class="form-item">
+                            <label>任务标题:</label>
+                            <input type="text" id="task-title" placeholder="请输入任务标题">
+                        </div>
+                        <div class="form-item">
+                            <label>任务描述:</label>
+                            <textarea id="task-description" placeholder="请输入任务描述"></textarea>
+                        </div>
+                        <div class="form-item">
+                            <label>截止时间:</label>
+                            <input type="datetime-local" id="task-deadline">
+                        </div>
+                        <div class="form-item">
+                            <label>打卡人数:</label>
+                            <input type="number" id="task-participants" min="1" value="5">
+                        </div>
+                        <button id="publish-task">发布任务</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 鼓励弹窗 -->
+        <div id="encouragement-modal" class="modal">
+            <div class="modal-content">
+                <h3>🎉 太棒了！</h3>
+                <p id="encouragement-message"></p>
+                <button id="close-modal">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+    <!-- Service Worker注册 -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then((registration) => {
+                        console.log('Service Worker 注册成功:', registration.scope);
+                    })
+                    .catch((error) => {
+                        console.log('Service Worker 注册失败:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

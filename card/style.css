@@ -1,0 +1,450 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+}
+
+.app-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 导航栏样式 */
+.navbar {
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px 0;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-left: 30px;
+    display: inline-block;
+}
+
+.nav-links {
+    list-style: none;
+    display: inline-block;
+    float: right;
+    margin-right: 30px;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.nav-link.active {
+    background-color: rgba(255,255,255,0.3);
+}
+
+/* 主内容区域 */
+.main-content {
+    min-height: 600px;
+}
+
+.section {
+    display: none;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+}
+
+.section.active {
+    display: block;
+}
+
+.section h2 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+.section h3 {
+    color: #555;
+    margin: 20px 0 15px;
+    font-size: 20px;
+}
+
+/* 番茄钟样式 */
+.pomodoro-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.pomodoro-settings {
+    flex: 1;
+    min-width: 300px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.setting-item {
+    margin-bottom: 15px;
+}
+
+.setting-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.setting-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.pomodoro-timer {
+    flex: 1;
+    min-width: 300px;
+    text-align: center;
+    padding: 40px;
+    background-color: #f0f8ff;
+    border-radius: 8px;
+}
+
+.timer-display {
+    font-size: 64px;
+    font-weight: bold;
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.timer-status {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.timer-controls button {
+    padding: 12px 24px;
+    margin: 0 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#start-timer {
+    background-color: #4CAF50;
+    color: white;
+}
+
+#pause-timer {
+    background-color: #ff9800;
+    color: white;
+}
+
+#reset-timer {
+    background-color: #f44336;
+    color: white;
+}
+
+.timer-controls button:hover {
+    opacity: 0.8;
+}
+
+/* 打卡样式 */
+.checkin-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.checkin-tasks,
+.checkin-upload,
+.checkin-history,
+.others-checkin {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.task-list,
+.history-list,
+.others-list {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.task-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.task-item:hover {
+    border-color: #4CAF50;
+    box-shadow: 0 2px 4px rgba(76, 175, 80, 0.1);
+}
+
+.task-item.selected {
+    border-color: #4CAF50;
+    background-color: #e8f5e8;
+}
+
+.upload-area {
+    margin-top: 20px;
+}
+
+#file-upload {
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+#submit-checkin {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#submit-checkin:hover {
+    background-color: #45a049;
+}
+
+.checkin-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+}
+
+.checkin-item .checkin-time {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 5px;
+}
+
+.checkin-item .checkin-files {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* 发布任务样式 */
+.publish-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.publish-form {
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-item {
+    margin-bottom: 20px;
+}
+
+.form-item label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-item input[type="text"],
+.form-item textarea,
+.form-item input[type="number"],
+.form-item input[type="datetime-local"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.form-item textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+#publish-task {
+    width: 100%;
+    padding: 15px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#publish-task:hover {
+    background-color: #45a049;
+}
+
+/* 弹窗样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    max-width: 400px;
+    width: 90%;
+}
+
+.modal-content h3 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+
+.modal-content p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+#close-modal {
+    padding: 10px 24px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#close-modal:hover {
+    background-color: #45a049;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .app-container {
+        padding: 10px;
+    }
+    
+    .navbar {
+        padding: 10px;
+    }
+    
+    .logo {
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    
+    .nav-links {
+        margin-right: 10px;
+    }
+    
+    .nav-links li {
+        margin-left: 10px;
+    }
+    
+    .nav-link {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .section {
+        padding: 20px;
+    }
+    
+    .pomodoro-container {
+        flex-direction: column;
+    }
+    
+    .pomodoro-timer {
+        padding: 20px;
+    }
+    
+    .timer-display {
+        font-size: 48px;
+    }
+    
+    .checkin-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section.active {
+    animation: fadeIn 0.5s ease;
+}
+
+.task-item,
+.checkin-item {
+    transition: all 0.3s ease;
+}
+
+.task-item:hover,
+.checkin-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
